@@ -1,0 +1,16 @@
+
+Name : Super-Chat
+
+
+
+#*#*-=> app setUp
+-=> 1.oo
+1.00 => git init
+1.01 => npm init
+1.02 => npm i express
+1.03 => npm i dotenv  // .env
+
+2.01 => npx create-react-app frontend
+
+
+
