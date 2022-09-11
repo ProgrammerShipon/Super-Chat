@@ -19,16 +19,10 @@ app.get('/api/chat', (req, res) => {
    res.send(chats);
 })
 app.get('/api/chat/:id', (req, res) => {
-   // res.send('Sayed');
    res.send(req.params.id);
    const singleChat = chats.find((n) => n._id === req.params.id);
    console.log(singleChat);
 })
-// app.get('/api/chat:id', (req, res) => {
-//    const singleChat = chats.find((c) => c._id);
-//    res.send(singleChat);
-// })
-
 
 
 // Port mangement
