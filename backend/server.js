@@ -18,7 +18,14 @@ connectDB();
 // get colors
 const colors = require('colors');
 
+// import UserRoutes
+const userRoutes = require('./routes/userRoutes')
+
+// to accept JSON Data
+app.use(express.json());
+
 // Routs 
+/*
 app.get('/', (req, res) => {
    res.send('API is Running Successfully');
 })
@@ -30,6 +37,9 @@ app.get('/api/chat/:id', (req, res) => {
    const singleChat = chats.find((n) => n._id === req.params.id);
    console.log(singleChat);
 })
+*/
+
+app.use('/api/user', userRoutes)
 
 
 // Port mangement
