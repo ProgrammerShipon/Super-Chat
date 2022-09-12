@@ -11,6 +11,13 @@ const app = express ();
 const dotEnv = require('dotenv');
 dotEnv.config();
 
+// MongoDB data base
+const connectDB = require('./config/db');
+connectDB();
+
+// get colors
+const colors = require('colors');
+
 // Routs 
 app.get('/', (req, res) => {
    res.send('API is Running Successfully');
@@ -28,5 +35,5 @@ app.get('/api/chat/:id', (req, res) => {
 // Port mangement
 const PORT = process.env.PORT || 5000
 // Server 
-app.listen(5000, console.log(`Server Started on PORT  ${PORT}`));
+app.listen(5000, console.log(`Server Started on PORT  ${PORT}`.green.bold));
 
