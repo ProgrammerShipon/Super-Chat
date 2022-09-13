@@ -10,7 +10,8 @@ Name : Super-Chat
 1.02 => npm i express
 1.03 => npm i mongoose
 1.04 => npm i express-async-handler
-1.05 => npm istall jsonwebtoken // password encrypted
+1.05 => npm install jsonwebtoken // password encrypted
+1.06 => npm install bcryptjs // bcryptjs
 
 2.01 => npx create-react-app frontend
 1.03 => npm i dotenv  // .env

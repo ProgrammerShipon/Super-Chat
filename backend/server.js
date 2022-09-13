@@ -19,7 +19,7 @@ connectDB();
 const colors = require('colors');
 
 // import UserRoutes
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
 
 // to accept JSON Data
 app.use(express.json());
@@ -40,6 +40,13 @@ app.get('/api/chat/:id', (req, res) => {
 */
 
 app.use('/api/user', userRoutes)
+
+
+// Error Handler
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+
+app.use(notFound)
+app.use(errorHandler)
 
 
 // Port mangement
