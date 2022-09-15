@@ -27,3 +27,15 @@ To create a production build, use => npm run build.
 mongodb => 
 UserName : Super-Chat
 pw : QBMEeqEbZ8lbOXNI
+
+cloudinary.com =>
+Config : 
+npm install cloudinary
+---
+cloudinary.config({ 
+  cloud_name: 'programmer-shipon', 
+  api_key: '232543488565924', 
+  api_secret: '3KArFJMSffuDB8PEDQCSMS1O0yg' 
+});
+---
+API  : CLOUDINARY_URL=cloudinary://232543488565924:3KArFJMSffuDB8PEDQCSMS1O0yg@programmer-shipon

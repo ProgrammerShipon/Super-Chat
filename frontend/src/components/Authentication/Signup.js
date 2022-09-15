@@ -1,7 +1,8 @@
+import { Button } from '@chakra-ui/button';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input, InputGroup, InputRightElement } from '@chakra-ui/input';
 import { VStack } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/button'
+import { useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 export const Signup = () => {
@@ -11,8 +12,56 @@ export const Signup = () => {
   const [ password, setPassword ] = useState();
   const [ confirmPassword, setConfirmpassword ] = useState();
   const [ pic, setPic ] = useState();
+  const [ loading , setLoading ] = useState(false);
+  const toast = useToast()
+
   const handleClick = () => setShow(!show);
-  const postDetails = (pics) => {};
+  
+  const postDetails = (pics) => {
+    if ( pic === undefined ) {
+      setLoading(true);
+      toast({
+        title: 'Please Select an Image! ',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+        position: 'bottom',
+      });
+      return;
+    }
+
+    if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
+      const data = new FormData();
+      data.append('file', pics);
+      data.append('upload_preset', 'Super-Chat');
+      data.append('cloud_name', 'programmer-shipon');
+      fetch('https://api.cloudinary.com/v1_1/programmer-shipon/image/upload', {
+        method: 'post',
+        body: data,
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        setPic(data.url.toString());
+        setLoading(false);
+      })
+      .catch ( (err) => {
+        console.log(err);
+        setLoading(false);
+      })
+    } else {
+      toast (
+        {
+          title: 'Please Select ans Image',
+          status: 'warning',
+          duration: 5000,
+          isClosable: true,
+          position: 'bottom',
+        }
+      );
+      setLoading(false);
+      return; 
+    }
+  };
   const submitHandler = () => {};
 
   return (
@@ -79,6 +128,7 @@ export const Signup = () => {
         width='100%'
         style={{ marginTop: 15 }}
         onClick={submitHandler}
+        isLoading={loading}
       >
         Sign Up
       </Button>
