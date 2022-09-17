@@ -52,5 +52,5 @@ app.use(errorHandler)
 // Port mangement
 const PORT = process.env.PORT || 5000
 // Server 
-app.listen(5000, console.log(`Server Started on PORT  ${PORT}`.green.bold));
+app.listen(PORT, console.log(`Server Started on PORT  ${PORT}`.green.bold));
 
